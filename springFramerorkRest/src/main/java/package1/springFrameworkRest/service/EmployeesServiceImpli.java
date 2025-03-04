@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import package1.springFrameworkRest.DAO.EmployeesDAO;
 import package1.springFrameworkRest.model.Employees;
 
@@ -15,33 +17,36 @@ public class EmployeesServiceImpli implements EmployeesService { // service comm
 	 private EmployeesDAO employeesDAO; // means we want to use the methods mentioned in EmployeesDAO
 
 	@Override
+	@Transactional
 	public void saveEmployees(Employees employees) {
 		employeesDAO.saveEmployees(employees);
 		
 	}
 
 	@Override
+	@Transactional
 	public void updateEmployees(Employees employees) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
+	@Transactional
 	public void deleteEmployees(int id) {
-		// TODO Auto-generated method stub
+		employeesDAO.deleteEmployees(id);
 		
 	}
 
 	@Override
+	@Transactional
 	public Employees getEmployeesById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return employeesDAO.getEmployeesById(id);
 	}
 
 	@Override
+	@Transactional
 	public List<Employees> getAllEmployees() {
-		// TODO Auto-generated method stub
-		return null;
+		return employeesDAO.getAllEmployees();
 	}
 
 	
